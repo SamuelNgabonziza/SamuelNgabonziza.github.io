@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samuel Ngabonziza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10160F;
+    --surface:#171F16;
+    --line:#2A342A;
+    --text:#ECEAE1;
+    --text-dim:#9BA79A;
+    --amber:#E3A03C;
+    --teal:#5FAE9E;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:inherit;margin:0;padding:0}
+  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth}
+  html,body{background:var(--bg)}
+  body{
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:0 28px}
+
+  header.hero{
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--line);
+  }
+  .kicker{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--teal);
+    letter-spacing:.02em;
+    margin-bottom:22px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(40px,7vw,64px);
+    line-height:1.05;
+    letter-spacing:-.01em;
+  }
+  .role{
+    font-size:18px;
+    color:var(--text-dim);
+    margin-top:18px;
+    max-width:46ch;
+  }
+  .bio{
+    margin-top:22px;
+    font-size:16px;
+    color:var(--text);
+    max-width:56ch;
+  }
+  .links{
+    margin-top:34px;
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  .links a{
+    font-size:15px;
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:3px;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .links a:hover{border-color:var(--amber); color:var(--amber)}
+
+  section{padding:64px 0; border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  h2{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:26px;
+    margin-bottom:36px;
+  }
+
+  .project{
+    display:flex;
+    gap:24px;
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .project:first-of-type{border-top:none}
+  .project .bar{
+    flex:0 0 3px;
+    background:var(--amber);
+    border-radius:2px;
+  }
+  .project.secondary .bar{background:var(--teal)}
+  .project .content{flex:1; min-width:0}
+  .project h3{
+    font-size:19px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .project h3 .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--amber);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:2px 7px;
+    margin-left:10px;
+    vertical-align:middle;
+  }
+  .project.secondary h3 .tag{color:var(--teal)}
+  .project p{color:var(--text-dim); font-size:15px; max-width:56ch}
+  .stack{
+    margin-top:14px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+  }
+  .stack span{
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:3px 8px;
+  }
+  .project .link{
+    display:inline-block;
+    margin-top:16px;
+    font-size:14px;
+    text-decoration:none;
+    color:var(--amber);
+    border-bottom:1px solid transparent;
+  }
+  .project.secondary .link{color:var(--teal)}
+  .project .link:hover{border-color:currentColor}
+
+  .add-note{
+    margin-top:30px;
+    font-size:13px;
+    color:var(--text-dim);
+    font-family:'IBM Plex Mono',monospace;
+  }
+
+  .skills{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px 40px;
+  }
+  @media (max-width:520px){ .skills{grid-template-columns:1fr} }
+  .skill-group h4{
+    font-size:13px;
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--text-dim);
+    font-weight:400;
+    margin-bottom:10px;
+  }
+  .skill-group ul{list-style:none}
+  .skill-group li{
+    font-size:15px;
+    padding:6px 0;
+    border-top:1px solid var(--line);
+  }
+  .skill-group li:first-child{border-top:none}
+
+  footer{
+    padding:56px 0 80px;
+  }
+  footer .row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  footer h2{margin-bottom:14px}
+  footer p{color:var(--text-dim); max-width:44ch; font-size:15px}
+  .contact-links{display:flex; flex-direction:column; gap:10px; font-size:15px}
+  .contact-links a{text-decoration:none; border-bottom:1px solid var(--line)}
+  .contact-links a:hover{color:var(--amber); border-color:var(--amber)}
+  .foot-mark{
+    margin-top:48px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">Soroti, Uganda</div>
+    <h1>Samuel Ngabonziza</h1>
+    <p class="role">Undergraduate in Computer &amp; Electronics Engineering at Soroti University.</p>
+    <p class="bio">I build software and hardware that solve problems close to home — from attendance systems for institutions to IoT sensors that watch over a coffee dryer. Currently deep in AI, Python, and Android development.</p>
+    <div class="links">
+      <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ngabonziza-samuel-7755a937b" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:ngabonzizasamuelprosper@gmail.com">Email</a>
+    </div>
+  </header>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="bar"></div>
+      <div class="content">
+        <h3>Super_Attendance_Maker <span class="tag">Android</span></h3>
+        <p>An attendance-tracking app built for companies and institutions to replace manual sign-in sheets with something faster and harder to falsify.</p>
+        <div class="stack"><span>Android</span><span>Kotlin/Java</span><span>In progress</span></div>
+        <a class="link" href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project secondary">
+      <div class="bar"></div>
+      <div class="content">
+        <h3>IoT Coffee Dryer Monitoring System <span class="tag">IoT</span></h3>
+        <p>A sensor-based monitoring system for coffee drying — built to give smallholder processors real-time visibility instead of guesswork.</p>
+        <div class="stack"><span>IoT</span><span>Sensors</span><span>Embedded</span></div>
+        <a class="link" href="https://github.com/SamuelNgabonziza/IoTCoffee_DryerMonitoniring_system" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </div>
+
+    <p class="add-note">// more projects added as they ship</p>
+  </section>
+
+  <section id="skills">
+    <h2>Focus areas</h2>
+    <div class="skills">
+      <div class="skill-group">
+        <h4>Building with</h4>
+        <ul>
+          <li>Python</li>
+          <li>Android development</li>
+          <li>Web development</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Learning toward</h4>
+        <ul>
+          <li>Artificial intelligence</li>
+          <li>IoT &amp; embedded systems</li>
+          <li>Digital skills, broadly</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="row">
+      <div>
+        <h2>Get in touch</h2>
+        <p>Open to internships, collaboration, and conversations about anything I'm building.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:ngabonzizasamuelprosper@gmail.com">ngabonzizasamuelprosper@gmail.com</a>
+        <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">github.com/SamuelNgabonziza</a>
+        <a href="https://www.linkedin.com/in/ngabonziza-samuel-7755a937b" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-mark">Soroti University — Computer &amp; Electronics Engineering</div>
+  </footer>
+</div>
+
+</body>
+</html>
