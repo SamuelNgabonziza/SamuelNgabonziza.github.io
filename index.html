@@ -9,13 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#10160F;
+    --bg:#0F1420;
     --surface:#171F16;
-    --line:#2A342A;
+    --line:#2A3447;
     --text:#ECEAE1;
-    --text-dim:#9BA79A;
-    --amber:#E3A03C;
-    --teal:#5FAE9E;
+    --text-dim:#9BA7C4;
+    --amber:#F5A623;
+    --teal:#3ECFB0;
+    --coral:#FF6F61;
+    --violet:#9D7BFF;
     box-sizing:border-box;
     padding-top:env(safe-area-inset-top,0px);
     padding-bottom:env(safe-area-inset-bottom,0px);
@@ -36,6 +38,10 @@
   header.hero{
     padding:96px 0 72px;
     border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(circle at 12% 0%, rgba(245,166,35,.16), transparent 45%),
+      radial-gradient(circle at 88% 30%, rgba(62,207,176,.14), transparent 50%),
+      radial-gradient(circle at 60% 90%, rgba(157,123,255,.10), transparent 55%);
   }
   .kicker{
     font-family:'IBM Plex Mono',monospace;
@@ -50,6 +56,10 @@
     font-size:clamp(40px,7vw,64px);
     line-height:1.05;
     letter-spacing:-.01em;
+    background:linear-gradient(100deg, var(--text) 40%, var(--amber) 75%, var(--coral) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
   }
   .role{
     font-size:18px;
@@ -77,6 +87,8 @@
     transition:border-color .15s ease, color .15s ease;
   }
   .links a:hover{border-color:var(--amber); color:var(--amber)}
+  .links a:nth-child(2):hover{border-color:var(--teal); color:var(--teal)}
+  .links a:nth-child(3):hover{border-color:var(--coral); color:var(--coral)}
 
   section{padding:64px 0; border-bottom:1px solid var(--line)}
   section:last-of-type{border-bottom:none}
@@ -116,7 +128,8 @@
     margin-left:10px;
     vertical-align:middle;
   }
-  .project.secondary h3 .tag{color:var(--teal)}
+  .project.secondary h3 .tag{color:var(--teal); border-color:rgba(62,207,176,.35)}
+  .project h3 .tag{border-color:rgba(245,166,35,.35)}
   .project p{color:var(--text-dim); font-size:15px; max-width:56ch}
   .stack{
     margin-top:14px;
@@ -132,6 +145,9 @@
     border-radius:4px;
     padding:3px 8px;
   }
+  .stack span:nth-child(3n+1){color:var(--amber); border-color:rgba(245,166,35,.3)}
+  .stack span:nth-child(3n+2){color:var(--teal); border-color:rgba(62,207,176,.3)}
+  .stack span:nth-child(3n+3){color:var(--violet); border-color:rgba(157,123,255,.3)}
   .project .link{
     display:inline-block;
     margin-top:16px;
@@ -159,17 +175,25 @@
   .skill-group h4{
     font-size:13px;
     font-family:'IBM Plex Mono',monospace;
-    color:var(--text-dim);
+    color:var(--violet);
     font-weight:400;
     margin-bottom:10px;
   }
   .skill-group ul{list-style:none}
   .skill-group li{
     font-size:15px;
-    padding:6px 0;
+    padding:6px 0 6px 16px;
     border-top:1px solid var(--line);
+    position:relative;
   }
   .skill-group li:first-child{border-top:none}
+  .skill-group li::before{
+    content:'';
+    position:absolute; left:0; top:16px;
+    width:6px; height:6px; border-radius:50%;
+    background:var(--coral);
+  }
+  .skill-group:last-child li::before{background:var(--teal)}
 
   footer{
     padding:56px 0 80px;
