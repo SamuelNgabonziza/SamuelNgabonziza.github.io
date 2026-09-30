@@ -4,7 +4,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#ff9b66">
 <title>Samuel Ngabonziza</title>
 <meta name="google-site-verification" content="NCreEP_XTwzjwRfBA6ec7jcZqdjSdo5dd-cbw0S9Gls" />
 <meta name="description" content="Samuel Ngabonziza - Undergraduate in Computer &amp; Electronics Engineering at Soroti University. Building practical software and hardware solutions for real-world problems.">
@@ -16,20 +16,23 @@
   /* ===== Professional Light-First Theme ===== */
   :root {
     /* Light theme (default - bright and professional) */
-    --bg: #fdfdfd;
-    --surface: #ffffff;
-    --surface-variant: #f8f9fa;
-    --border: #e9ecef;
-    --border-light: #f1f3f5;
-    --text-primary: #212529;
-    --text-secondary: #495057;
-    --text-muted: #6c757d;
+    --bg: #fff7cc;
+    --surface: #fffef5;
+    --surface-variant: #e3f3ff;
+    --border: #c5dff0;
+    --border-light: #d7ebf7;
+    --text-primary: #202432;
+    --text-secondary: #394354;
+    --text-muted: #586578;
 
     /* Sophisticated accent colors - professional but distinctive */
-    --accent-amber: #d97706;
-    --accent-teal: #0f766e;
-    --accent-coral: #c2410c;
-    --accent-violet: #5b21b6;
+    --accent-amber: #a56b00;
+    --accent-blue: #176fc1;
+    --accent-coral: #c83d2b;
+    --accent-violet: #7040b5;
+    --section-projects: #ffdf67;
+    --section-skills: #cceaff;
+    --section-contact: #ffd0c3;
 
     /* Shadows for depth without being heavy */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
@@ -65,26 +68,32 @@
 
       /* Slightly lighter accents for dark theme readability */
       --accent-amber: #fbbf24;
-      --accent-teal: #5eead4;
+      --accent-blue: #72c9ff;
       --accent-coral: #fb923c;
       --accent-violet: #a78bfa;
+      --section-projects: #3b321d;
+      --section-skills: #19344a;
+      --section-contact: #452a2a;
     }
   }
 
   /* Manual override for user preference */
   html[data-theme="light"] {
-    --bg: #fdfdfd;
-    --surface: #ffffff;
-    --surface-variant: #f8f9fa;
-    --border: #e9ecef;
-    --border-light: #f1f3f5;
-    --text-primary: #212529;
-    --text-secondary: #495057;
-    --text-muted: #6c757d;
-    --accent-amber: #d97706;
-    --accent-teal: #0f766e;
-    --accent-coral: #c2410c;
-    --accent-violet: #5b21b6;
+    --bg: #fff7cc;
+    --surface: #fffef5;
+    --surface-variant: #e3f3ff;
+    --border: #c5dff0;
+    --border-light: #d7ebf7;
+    --text-primary: #202432;
+    --text-secondary: #394354;
+    --text-muted: #586578;
+    --accent-amber: #a56b00;
+    --accent-blue: #176fc1;
+    --accent-coral: #c83d2b;
+    --accent-violet: #7040b5;
+    --section-projects: #ffdf67;
+    --section-skills: #cceaff;
+    --section-contact: #ffd0c3;
   }
 
   html[data-theme="dark"] {
@@ -97,9 +106,12 @@
     --text-secondary: #e2e8f0;
     --text-muted: #94a3b8;
     --accent-amber: #fbbf24;
-    --accent-teal: #5eead4;
+    --accent-blue: #72c9ff;
     --accent-coral: #fb923c;
     --accent-violet: #a78bfa;
+    --section-projects: #3b321d;
+    --section-skills: #19344a;
+    --section-contact: #452a2a;
   }
 
   /* ===== Base Styles ===== */
@@ -144,6 +156,7 @@
   /* ===== Header/Hero Section ===== */
   header {
     padding: 6rem 0 4rem;
+    background: linear-gradient(115deg, #ffa366 0%, #ff7bb4 33%, #a88cff 66%, #59cfff 100%);
     border-bottom: 1px solid var(--border);
     position: relative;
     overflow: hidden;
@@ -155,12 +168,12 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 200px;
+    height: 100%;
     background: linear-gradient(
       135deg,
-      rgba(217, 119, 6, 0.03) 0%,
-      rgba(15, 118, 110, 0.03) 50%,
-      rgba(91, 33, 182, 0.02) 100%
+      rgba(255, 214, 51, 0.16) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(82, 220, 255, 0.12) 100%
     );
     pointer-events: none;
     z-index: 0;
@@ -174,26 +187,6 @@
     margin: 0 auto;
   }
 
-  .location {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--accent-teal);
-    letter-spacing: 0.5px;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 1rem;
-    background-color: rgba(15, 118, 110, 0.08);
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(15, 118, 110, 0.15);
-  }
-
-  .location::before {
-    content: "📍";
-    font-size: 1rem;
-  }
-
   h1 {
     font-family: var(--font-serif);
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -202,10 +195,10 @@
     margin-bottom: 1.5rem;
     background: linear-gradient(
       135deg,
-      var(--accent-amber) 0%,
-      var(--accent-teal) 30%,
-      var(--accent-violet) 70%,
-      var(--accent-amber) 100%
+      #9f2f3d 0%,
+      #4e32a0 38%,
+      #1d5699 68%,
+      #a42e69 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -228,6 +221,11 @@
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  header .role,
+  header .bio {
+    color: #303548;
   }
 
   .bio {
@@ -258,6 +256,12 @@
     transition: var(--transition);
   }
 
+  header .link-item {
+    color: #202432;
+    border-color: rgba(32, 36, 50, 0.28);
+    background-color: rgba(255, 255, 255, 0.45);
+  }
+
   .link-item:hover {
     color: var(--text-primary);
     background-color: var(--surface-variant);
@@ -266,7 +270,7 @@
   }
 
   .link-item.github:hover { border-color: var(--accent-amber); }
-  .link-item.linkedin:hover { border-color: var(--accent-teal); }
+  .link-item.linkedin:hover { border-color: var(--accent-blue); }
   .link-item.email:hover { border-color: var(--accent-coral); }
 
   /* ===== Theme Toggle ===== */
@@ -277,9 +281,9 @@
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    border: 1px solid var(--border);
-    background-color: var(--surface);
-    color: var(--text-muted);
+    border: 1px solid #198754;
+    background-color: #198754;
+    color: #ffffff;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -290,7 +294,7 @@
   }
 
   .theme-toggle:hover {
-    background-color: var(--border-light);
+    background-color: #146c43;
     transform: rotate(90deg);
   }
 
@@ -308,6 +312,10 @@
     padding: 5rem 0;
     border-bottom: 1px solid var(--border);
   }
+
+  #projects { background-color: var(--section-projects); }
+  #skills { background-color: var(--section-skills); }
+  #contact { background-color: var(--section-contact); }
 
   section:last-of-type {
     border-bottom: none;
@@ -330,7 +338,7 @@
     left: 0;
     width: 50px;
     height: 3px;
-    background: linear-gradient(90deg, var(--accent-amber), var(--accent-teal));
+    background: linear-gradient(90deg, #f0bd00, var(--accent-blue));
     border-radius: 2px;
   }
 
@@ -367,7 +375,7 @@
   }
 
   .project.secondary .project-accent {
-    background: var(--accent-teal);
+    background: var(--accent-blue);
   }
 
   .project-content {
@@ -397,15 +405,15 @@
     letter-spacing: 0.5px;
     padding: 0.25rem 0.75rem;
     border-radius: var(--radius-sm);
-    background-color: rgba(217, 119, 6, 0.1);
+    background-color: rgba(255, 214, 51, 0.28);
     color: var(--accent-amber);
-    border: 1px solid rgba(217, 119, 6, 0.2);
+    border: 1px solid rgba(165, 107, 0, 0.3);
   }
 
   .project.secondary .project-tag {
-    background-color: rgba(15, 118, 110, 0.1);
-    color: var(--accent-teal);
-    border-color: rgba(15, 118, 110, 0.2);
+    background-color: rgba(23, 111, 193, 0.1);
+    color: var(--accent-blue);
+    border-color: rgba(23, 111, 193, 0.25);
   }
 
   .project-description {
@@ -439,8 +447,8 @@
   }
 
   .tech-item:nth-child(3n+2) {
-    border-color: var(--accent-teal);
-    color: var(--accent-teal);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
   }
 
   .tech-item:nth-child(3n+3) {
@@ -467,11 +475,11 @@
   }
 
   .project.secondary .project-link {
-    color: var(--accent-teal);
+    color: var(--accent-blue);
   }
 
   .project.secondary .project-link:hover {
-    border-color: var(--accent-teal);
+    border-color: var(--accent-blue);
   }
 
   .project-link svg {
@@ -520,7 +528,7 @@
     content: '';
     width: 4px;
     height: 24px;
-    background: linear-gradient(180deg, var(--accent-amber), var(--accent-teal));
+    background: linear-gradient(180deg, #f0bd00, var(--accent-blue));
     border-radius: 2px;
   }
 
@@ -566,7 +574,7 @@
   }
 
   .skill-level.intermediate {
-    color: var(--accent-teal);
+    color: var(--accent-blue);
   }
 
   .skill-level.advanced {
@@ -613,7 +621,7 @@
   }
 
   .contact-item.github { border-color: var(--accent-amber); }
-  .contact-item.linkedin { border-color: var(--accent-teal); }
+  .contact-item.linkedin { border-color: var(--accent-blue); }
   .contact-item.email { border-color: var(--accent-coral); }
 
   /* ===== Footer ===== */
@@ -621,8 +629,17 @@
     text-align: center;
     padding: 3rem 0 1.5rem;
     color: var(--text-muted);
-    font-size: 0.875rem;
+    font-size: 1rem;
     border-top: 1px solid var(--border);
+    background-color: #29243f;
+    color: #f2edff;
+  }
+
+  .footer-location {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
   }
 
   .footer-mark {
@@ -669,11 +686,6 @@
       padding: 3rem 0 1.5rem;
     }
 
-    .location {
-      font-size: 0.75rem;
-      padding: 0.375rem 0.75rem;
-    }
-
     h1 {
       font-size: clamp(1.75rem, 10vw, 2.25rem);
     }
@@ -690,6 +702,247 @@
       font-size: 0.85rem;
       padding: 0.375rem 0.75rem;
     }
+  }
+
+  html[data-theme="light"] {
+    --bg: #fff0a6;
+    --surface: #ffffff;
+    --surface-variant: #dbf7ff;
+    --border: #111111;
+    --border-light: #111111;
+    --text-primary: #000000;
+    --text-secondary: #000000;
+    --text-muted: #000000;
+    --section-projects: #ffdc35;
+    --section-skills: #73dcff;
+    --section-contact: #ff98b8;
+  }
+
+  html[data-theme="light"] body {
+    font-size: 17px;
+    color: #000000;
+  }
+
+  header {
+    position: relative;
+    left: 50%;
+    width: calc(100vw - 24px);
+    max-width: none;
+    transform: translateX(-50%);
+    padding: 5rem 0 4rem;
+    background: linear-gradient(115deg, #ff7d32 0%, #ff4f9a 34%, #914bff 68%, #22c9ee 100%);
+  }
+
+  header::before {
+    background: linear-gradient(135deg, rgba(255, 233, 68, 0.22), rgba(255, 255, 255, 0.04) 48%, rgba(49, 229, 255, 0.18));
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: none;
+    text-align: left;
+  }
+
+  .hero-card {
+    min-width: 0;
+    min-height: 300px;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border: 3px solid #000000;
+    border-radius: 12px;
+    color: #000000;
+    box-shadow: 8px 8px 0 #111111;
+  }
+
+  .hero-identity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffe33b;
+  }
+
+  .hero-intro {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #68ddff;
+  }
+
+  .hero-kicker {
+    margin: 0 0 0.75rem;
+    color: #000000;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 1.25rem;
+    color: #000000;
+    font-size: clamp(2.5rem, 5vw, 3.6rem);
+    background: none;
+    -webkit-text-fill-color: #000000;
+    animation: none;
+  }
+
+  .role {
+    margin: 0;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .bio {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: #000000;
+    font-size: 1.15rem;
+    line-height: 1.75;
+  }
+
+  header .bio {
+    color: #000000;
+  }
+
+  .bio-lead {
+    display: block;
+    margin-bottom: 0.65rem;
+    color: #c62971;
+    font-family: var(--font-serif);
+    font-size: 5.5rem;
+    line-height: 0.85;
+  }
+
+  .links {
+    grid-column: 1 / -1;
+    gap: 1rem;
+  }
+
+  header .link-item {
+    padding: 0.6rem 1.1rem;
+    border: 2px solid #000000;
+    background: #ffffff;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  #projects { background-color: var(--section-projects); }
+  #skills { background-color: var(--section-skills); }
+  #contact { background-color: var(--section-contact); }
+
+  .container {
+    max-width: none;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  header {
+    left: auto;
+    width: 100%;
+    transform: none;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 1.5rem;
+  }
+
+  .skills-container {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    gap: 1.5rem;
+  }
+
+  .contact-content {
+    max-width: none;
+    margin: 0;
+    text-align: left;
+  }
+
+  .contact-content > p {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    text-align: left;
+  }
+
+  .contact-info {
+    align-items: stretch;
+  }
+
+  .contact-item {
+    justify-content: flex-start;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-align: left;
+  }
+
+  section {
+    border-bottom: 3px solid #000000;
+  }
+
+  h2 {
+    color: #000000;
+    font-size: 2.2rem;
+  }
+
+  .project-card,
+  .skill-category,
+  .contact-item {
+    border: 2px solid #000000;
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .project-card:nth-child(odd) { box-shadow: 7px 7px 0 #ff5ca8; }
+  .project-card:nth-child(even) { box-shadow: 7px 7px 0 #21bfe8; }
+  .skill-category:first-child { box-shadow: 7px 7px 0 #ffae32; }
+  .skill-category:last-child { box-shadow: 7px 7px 0 #a34cff; }
+
+  .project-content h3,
+  .skill-category h3,
+  .project-description,
+  .skill-item,
+  .contact-item,
+  .contact-content p {
+    color: #000000;
+  }
+
+  .project-description,
+  .skill-item,
+  .contact-item {
+    font-size: 1.05rem;
+  }
+
+  .tech-item,
+  .project-tag,
+  .skill-level {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .hero-card {
+      min-height: 0;
+    }
+
+    .hero-identity { min-height: 240px; }
+    .hero-intro { min-height: 250px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-card { padding: 1.4rem; }
+    h1 { font-size: 2.4rem; }
+    .bio { font-size: 1.05rem; }
+    .bio-lead { font-size: 4.5rem; }
   }
 
   /* ===== Print Styles ===== */
@@ -715,6 +968,7 @@
     h1 {
       -webkit-text-fill-color: black;
       -webkit-background-clip: initial;
+      background-clip: initial;
       background: none;
       color: black;
     }
@@ -740,10 +994,14 @@
   <div class="container">
     <header>
       <div class="hero-content">
-        <div class="location">Soroti, Uganda</div>
-        <h1>Samuel Ngabonziza</h1>
-        <p class="role">Undergraduate in Computer &amp; Electronics Engineering at Soroti University</p>
-        <p class="bio">I build practical software and hardware solutions that solve real-world problems — from attendance systems for educational institutions to IoT sensors that monitor agricultural processes. Currently focused on AI, Python development, and embedded systems engineering.</p>
+        <div class="hero-card hero-identity">
+          <p class="hero-kicker">Computer &amp; Electronics Engineering</p>
+          <h1>Samuel Ngabonziza</h1>
+          <p class="role">Undergraduate at Soroti University</p>
+        </div>
+        <div class="hero-card hero-intro">
+          <p class="bio"><span class="bio-lead">I</span> build practical software and hardware solutions that solve real-world problems — from attendance systems for educational institutions to IoT sensors that monitor agricultural processes. Currently focused on AI, Python development, and embedded systems engineering.</p>
+        </div>
         <div class="links">
           <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener" class="link-item github">
             GitHub
@@ -830,7 +1088,7 @@
         </div>
 
         <div class="skill-category">
-          <h3>Learning toward</h3>
+          <h3>Learning Toward</h3>
           <div class="skill-list">
             <div class="skill-item">
               <span class="skill-name">Artificial Intelligence</span>
@@ -883,6 +1141,7 @@
     <footer>
       <p>© <span id="year"></span> Samuel Ngabonziza. All rights reserved.</p>
       <span class="footer-mark">Soroti University — Computer &amp; Electronics Engineering</span>
+      <span class="footer-location">Based in Soroti, Uganda</span>
     </footer>
   </div>
 
