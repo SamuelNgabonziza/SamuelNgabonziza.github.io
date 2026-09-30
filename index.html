@@ -1,646 +1,930 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FFFFFF">
-<meta name="description" content="Samuel Ngabonziza — Undergraduate in Computer & Electronics Engineering at Soroti University. Building software and hardware that solve problems close to home.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
 <title>Samuel Ngabonziza</title>
+<meta name="google-site-verification" content="NCreEP_XTwzjwRfBA6ec7jcZqdjSdo5dd-cbw0S9Gls" />
+<meta name="description" content="Samuel Ngabonziza - Undergraduate in Computer &amp; Electronics Engineering at Soroti University. Building practical software and hardware solutions for real-world problems.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* ===== Theme Variables ===== */
-  :root{
-    /* Light theme (default) */
-    --bg:#FFFFFF;
-    --surface:#FFFFFF;
-    --surface-elev:#F8FAFC;
-    --line:#E2E8F0;
-    --line-thin:#F1F5F9;
-    --text:#0F172A;
-    --text-dim:#64748B;
-    --text-muted:#94A3B8;
-    --amber:#F59E0B;
-    --teal:#14B8A6;
-    --coral:#F43F5E;
-    --violet:#8B5CF6;
-    /* Shadows */
-    --shadow-xs:0 1px 2px 0 rgb(15 23 42 / 0.04);
-    --shadow-sm:0 1px 3px 0 rgb(15 23 42 / 0.1), 0 1px 2px -1px rgb(15 23 42 / 0.1);
-    --shadow-md:0 4px 6px -1px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.08);
-    --shadow-lg:0 10px 15px -3px rgb(15 23 42 / 0.08), 0 4px 6px -4px rgb(15 23 42 / 0.08);
-    --shadow-xl:0 20px 25px -5px rgb(15 23 42 / 0.08), 0 8px 10px -6px rgb(15 23 42 / 0.08);
-    --shadow-inner:inset 0 2px 4px 0 rgb(15 23 42 / 0.04);
-    /* Radius */
-    --radius-sm:6px;
-    --radius-md:10px;
-    --radius-lg:16px;
-    --radius-xl:24px;
-    /* Motion */
-    --ease-out:cubic-bezier(0.25,0.1,0.25,1);
-    --ease-in:cubic-bezier(0.42,0,1,1);
-    --transition-fast:150ms;
-    --transition-normal:250ms;
-    --transition-slow:400ms;
-    box-sizing:border-box;
-    padding-top:env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
+  /* ===== Professional Light-First Theme ===== */
+  :root {
+    /* Light theme (default - bright and professional) */
+    --bg: #fdfdfd;
+    --surface: #ffffff;
+    --surface-variant: #f8f9fa;
+    --border: #e9ecef;
+    --border-light: #f1f3f5;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6c757d;
+
+    /* Sophisticated accent colors - professional but distinctive */
+    --accent-amber: #d97706;
+    --accent-teal: #0f766e;
+    --accent-coral: #c2410c;
+    --accent-violet: #5b21b6;
+
+    /* Shadows for depth without being heavy */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.05);
+
+    /* Typography */
+    --font-serif: 'Fraunces', serif;
+    --font-sans: 'IBM Plex Sans', sans-serif;
+
+    /* Border radius */
+    --radius: 8px;
+    --radius-sm: 4px;
+    --radius-lg: 12px;
+
+    /* Transitions */
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    box-sizing: border-box;
   }
-  /* Dark theme (system preference) */
+
+  /* Dark theme (respects system preference) */
   @media (prefers-color-scheme: dark) {
-    :root{
-      --bg:#0F1420;
-      --surface:#111826;
-      --surface-elev:#171F26;
-      --line:#2A3447;
-      --line-thin:rgba(42,52,71,0.5);
-      --text:#ECEAE1;
-      --text-dim:#9BA7C4;
-      --text-muted:#7A879B;
-      --amber:#F5A623;
-      --teal:#3ECFB0;
-      --coral:#FF6F61;
-      --violet:#9D7BFF;
-      --shadow-xs:0 1px 2px 0 rgb(0 0 0 / 0.2);
-      --shadow-sm:0 1px 3px 0 rgb(0 0 0 / 0.25), 0 1px 2px -1px rgb(0 0 0 / 0.25);
-      --shadow-md:0 4px 6px -1px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.25);
-      --shadow-lg:0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.25);
-      --shadow-xl:0 20px 25px -5px rgb(0 0 0 / 0.25), 0 8px 10px -6px rgb(0 0 0 / 0.25);
-      --shadow-inner:inset 0 2px 4px 0 rgb(0 0 0 / 0.2);
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-variant: #334155;
+      --border: #475569;
+      --border-light: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #e2e8f0;
+      --text-muted: #94a3b8;
+
+      /* Slightly lighter accents for dark theme readability */
+      --accent-amber: #fbbf24;
+      --accent-teal: #5eead4;
+      --accent-coral: #fb923c;
+      --accent-violet: #a78bfa;
     }
   }
-  /* Manual override (if user sets a preference) */
-  html[data-theme="light"]{
-    --bg:#FFFFFF;
-    --surface:#FFFFFF;
-    --surface-elev:#F8FAFC;
-    --line:#E2E8F0;
-    --line-thin:#F1F5F9;
-    --text:#0F172A;
-    --text-dim:#64748B;
-    --text-muted:#94A3B8;
-    --amber:#F59E0B;
-    --teal:#14B8A6;
-    --coral:#F43F5E;
-    --violet:#8B5CF6;
-  }
-  html[data-theme="dark"]{
-    --bg:#0F1420;
-    --surface:#111826;
-    --surface-elev:#171F26;
-    --line:#2A3447;
-    --line-thin:rgba(42,52,71,0.5);
-    --text:#ECEAE1;
-    --text-dim:#9BA7C4;
-    --text-muted:#7A879B;
-    --amber:#F5A623;
-    --teal:#3ECFB0;
-    --coral:#FF6F61;
-    --violet:#9D7BFF;
-  }
-  /* ===== Reset & Base ===== */
-  :root{box-sizing:border-box}
-  *, *::before, *::after{box-sizing:inherit;margin:0;padding:0}
-  html{
-    scroll-padding-top:env(safe-area-inset-top,0px);
-    scroll-behavior:smooth;
-    font-size:clamp(15px,1vw + 0.5rem,17px);
-  }
-  html,body{background:var(--bg);transition:background-color var(--transition-normal) var(--ease-out),color var(--transition-normal) var(--ease-out)}
-  body{
-    color:var(--text);
-    font-family:'IBM Plex Sans',sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    font-weight:400;
-  }
-  a{color:inherit;text-decoration:none}
-  img{max-width:100%;display:block}
-  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
 
-  /* ===== Layout: Grid & Spacing ===== */
-  section{padding:56px 0;border-bottom:1px solid var(--line);transition:border-color var(--transition-normal) var(--ease-out)}
-  section:last-of-type{border-bottom:none}
-  section + section{margin-top:8px}
-
-  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.01em}
-  h1{font-size:clamp(36px,8vw,64px);line-height:1.05}
-  h2{font-size:clamp(22px,4vw,26px);margin-bottom:32px}
-  h3{font-size:clamp(17px,2.5vw,19px);font-weight:600;margin-bottom:8px}
-  h4{font-size:13px;font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:.04em}
-  p{line-height:1.65}
-
-  /* ===== Hero Section ===== */
-  header.hero{
-    padding:80px 0 64px;
-    position:relative;
-    overflow:hidden;
-    border-bottom:1px solid var(--line);
-  }
-  header.hero::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    background:
-      radial-gradient(circle at 12% 0%,rgba(245,166,35,.08),transparent 35%),
-      radial-gradient(circle at 88% 30%,rgba(62,207,176,.08),transparent 40%),
-      radial-gradient(circle at 60% 90%,rgba(157,123,255,.06),transparent 45%);
-    opacity:0.8;
-  }
-  .hero-inner{position:relative;z-index:1}
-
-  .kicker{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;
-    color:var(--teal);
-    letter-spacing:.04em;
-    margin-bottom:28px;
-    font-weight:500;
-    padding:5px 12px;
-    background:rgba(20,184,166,0.08);
-    border-radius:var(--radius-sm);
-  }
-  .kicker::before{
-    content:'\2022';
-    font-size:14px;
-    opacity:0.8;
+  /* Manual override for user preference */
+  html[data-theme="light"] {
+    --bg: #fdfdfd;
+    --surface: #ffffff;
+    --surface-variant: #f8f9fa;
+    --border: #e9ecef;
+    --border-light: #f1f3f5;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6c757d;
+    --accent-amber: #d97706;
+    --accent-teal: #0f766e;
+    --accent-coral: #c2410c;
+    --accent-violet: #5b21b6;
   }
 
-  h1{
-    font-family:'Fraunces',serif;
-    font-weight:500;
-    line-height:1.05;
-    letter-spacing:-.015em;
-    background:linear-gradient(100deg,var(--amber) 0%,var(--coral) 50%,var(--violet) 100%);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    background-size:200% auto;
-    animation:gradient-shift 6s ease-in-out infinite;
-  }
-  @keyframes gradient-shift{
-    0%,100%{background-position:0%}
-    50%{background-position:100%}
+  html[data-theme="dark"] {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface-variant: #334155;
+    --border: #475569;
+    --border-light: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent-amber: #fbbf24;
+    --accent-teal: #5eead4;
+    --accent-coral: #fb923c;
+    --accent-violet: #a78bfa;
   }
 
-  .role{
-    font-size:17px;
-    color:var(--text-dim);
-    margin-top:20px;
-    font-weight:400;
-    line-height:1.5;
-  }
-  .bio{
-    margin-top:20px;
-    font-size:16px;
-    color:var(--text);
-    max-width:58ch;
-    line-height:1.7;
+  /* ===== Base Styles ===== */
+  *, *::before, *::after {
+    box-sizing: inherit;
   }
 
-  .links{
-    margin-top:36px;
-    display:flex;
-    gap:28px;
-    flex-wrap:wrap;
-    align-items:center;
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    scroll-behavior: smooth;
   }
-  .link-list{
-    display:flex;
-    gap:28px;
-    flex-wrap:wrap;
-  }
-  .link-list a{
-    font-size:14px;
-    font-weight:500;
-    color:var(--text-dim);
-    padding:3px 0;
-    position:relative;
-    transition:color var(--transition-fast) var(--ease-out);
-  }
-  .link-list a:hover{
-    color:var(--amber);
-    border-color:var(--amber);
-  }
-  .link-list a:nth-child(1):hover{color:var(--amber)}
-  .link-list a:nth-child(2):hover{color:var(--teal)}
-  .link-list a:nth-child(3):hover{color:var(--coral)}
-  .link-list a::after{
-    content:'';
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:0;
-    height:1px;
-    background:currentColor;
-    transition:width var(--transition-fast) var(--ease-out);
-  }
-  .link-list a:hover::after{width:100%}
 
-  /* Theme toggle button */
-  .theme-toggle{
-    --size:36px;
-    width:var(--size);
-    height:var(--size);
-    border-radius:var(--radius-md);
-    border:1px solid var(--line);
-    background:var(--surface);
-    color:var(--text-dim);
-    cursor:pointer;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    transition:all var(--transition-normal) var(--ease-out);
-    box-shadow:var(--shadow-sm);
-    flex-shrink:0;
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  .theme-toggle:hover{
-    border-color:var(--amber);
-    color:var(--amber);
-    transform:scale(1.05);
-    box-shadow:var(--shadow-md);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
   }
-  .theme-toggle:focus{outline:2px solid var(--amber);outline-offset:2px}
-  .theme-toggle svg{width:16px;height:16px}
-  .theme-toggle .moon{display:none}
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ===== Header/Hero Section ===== */
+  header {
+    padding: 6rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(
+      135deg,
+      rgba(217, 119, 6, 0.03) 0%,
+      rgba(15, 118, 110, 0.03) 50%,
+      rgba(91, 33, 182, 0.02) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .location {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent-teal);
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(15, 118, 110, 0.08);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(15, 118, 110, 0.15);
+  }
+
+  .location::before {
+    content: "📍";
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(
+      135deg,
+      var(--accent-amber) 0%,
+      var(--accent-teal) 30%,
+      var(--accent-violet) 70%,
+      var(--accent-amber) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .role {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bio {
+    font-size: 1rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+    max-width: 650px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .link-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+  }
+
+  .link-item:hover {
+    color: var(--text-primary);
+    background-color: var(--surface-variant);
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+  }
+
+  .link-item.github:hover { border-color: var(--accent-amber); }
+  .link-item.linkedin:hover { border-color: var(--accent-teal); }
+  .link-item.email:hover { border-color: var(--accent-coral); }
+
+  /* ===== Theme Toggle ===== */
+  .theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--border-light);
+    transform: rotate(90deg);
+  }
+
+  .theme-toggle:active {
+    transform: scale(0.95) rotate(90deg);
+  }
+
+  .theme-toggle svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* ===== Sections ===== */
+  section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-amber), var(--accent-teal));
+    border-radius: 2px;
+  }
 
   /* ===== Projects Section ===== */
-  .project-card{
-    background:var(--surface);
-    border:1px solid var(--line);
-    border-radius:var(--radius-lg);
-    padding:28px;
-    box-shadow:var(--shadow-xs);
-    transition:box-shadow var(--transition-normal) var(--ease-out),transform var(--transition-normal) var(--ease-out),border-color var(--transition-normal) var(--ease-out);
-    position:relative;
-    overflow:hidden;
-  }
-  .project-card:hover{
-    box-shadow:var(--shadow-lg);
-    transform:translateY(-2px);
-  }
-  .project-card:hover .accent-bar{opacity:0.8}
-  .accent-bar{
-    position:absolute;
-    top:0;
-    left:0;
-    width:3px;
-    height:100%;
-    border-radius:0 4px 4px 0;
-    background:var(--amber);
-    opacity:0.6;
-    transition:opacity var(--transition-fast) var(--ease-out);
-  }
-  .project.secondary .accent-bar{
-    background:var(--teal);
-  }
-  .project .content{margin-left:12px}
-  .project h3{
-    font-size:clamp(17px,2.2vw,19px);
-    font-weight:600;
-    margin-bottom:8px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    flex-wrap:wrap;
-  }
-  .tag{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    font-weight:500;
-    color:var(--amber);
-    background:rgba(245,158,11,.12);
-    border:1px solid rgba(245,158,11,.25);
-    border-radius:var(--radius-sm);
-    padding:3px 10px;
-    letter-spacing:.03em;
-    text-transform:uppercase;
-    white-space:nowrap;
-  }
-  .project.secondary .tag{
-    color:var(--teal);
-    background:rgba(20,184,166,.12);
-    border-color:rgba(20,184,166,.25);
-  }
-  .project p{
-    color:var(--text-dim);
-    font-size:15px;
-    max-width:56ch;
-    margin-bottom:16px;
-  }
-  .stack{
-    margin-top:14px;
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-  }
-  .stack span{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px;
-    font-weight:500;
-    color:var(--text-dim);
-    background:var(--surface-elev);
-    border:1px solid var(--line);
-    border-radius:var(--radius-sm);
-    padding:4px 10px;
-    transition:all var(--transition-fast) var(--ease-out);
-  }
-  .stack span:nth-child(3n+1){color:var(--amber);border-color:rgba(245,158,11,.2);background:rgba(245,158,11,.03)}
-  .stack span:nth-child(3n+2){color:var(--teal);border-color:rgba(20,184,166,.2);background:rgba(20,184,166,.03)}
-  .stack span:nth-child(3n+3){color:var(--violet);border-color:rgba(139,92,246,.2);background:rgba(139,92,246,.03)}
-  .stack span:hover{
-    transform:translateY(-1px);
-    box-shadow:var(--shadow-xs);
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
   }
 
-  .project .link{
-    display:inline-flex;
-    align-items:center;
-    gap:4px;
-    margin-top:18px;
-    font-size:14px;
-    font-weight:500;
-    color:var(--amber);
-    transition:color var(--transition-fast) var(--ease-out);
+  .project-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
   }
-  .project .link:hover{color:var(--amber)}
-  .project.secondary .link{color:var(--teal)}
-  .project.secondary .link:hover{color:var(--teal)}
-  .project .link svg{width:14px;height:14px}
 
-  .add-note{
-    margin-top:28px;
-    font-size:13px;
-    color:var(--text-dim);
-    font-family:'IBM Plex Mono',monospace;
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-light);
+  }
+
+  .project-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-amber);
+  }
+
+  .project.secondary .project-accent {
+    background: var(--accent-teal);
+  }
+
+  .project-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .project-content h3 {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .project-tag {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    background-color: rgba(217, 119, 6, 0.1);
+    color: var(--accent-amber);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+  }
+
+  .project.secondary .project-tag {
+    background-color: rgba(15, 118, 110, 0.1);
+    color: var(--accent-teal);
+    border-color: rgba(15, 118, 110, 0.2);
+  }
+
+  .project-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+
+  .tech-item {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background-color: var(--surface-variant);
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+  }
+
+  .tech-item:nth-child(3n+1) {
+    border-color: var(--accent-amber);
+    color: var(--accent-amber);
+  }
+
+  .tech-item:nth-child(3n+2) {
+    border-color: var(--accent-teal);
+    color: var(--accent-teal);
+  }
+
+  .tech-item:nth-child(3n+3) {
+    border-color: var(--accent-violet);
+    color: var(--accent-violet);
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent-amber);
+    margin-top: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+  }
+
+  .project-link:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-amber);
+  }
+
+  .project.secondary .project-link {
+    color: var(--accent-teal);
+  }
+
+  .project.secondary .project-link:hover {
+    border-color: var(--accent-teal);
+  }
+
+  .project-link svg {
+    width: 1rem;
+    height: 1rem;
+    transition: var(--transition);
+  }
+
+  .project-link:hover svg {
+    transform: translateX(3px);
   }
 
   /* ===== Skills Section ===== */
-  .skills{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:32px 40px;
+  .skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
   }
-  @media (max-width:560px){ .skills{grid-template-columns:1fr} }
-  .skill-group h4{
-    font-size:13px;
-    font-family:'IBM Plex Mono',monospace;
-    color:var(--violet);
-    font-weight:500;
-    margin-bottom:16px;
-    display:flex;
-    align-items:center;
-    gap:8px;
+
+  @media (max-width: 768px) {
+    .skills-container {
+      grid-template-columns: 1fr;
+    }
   }
-  .skill-group h4::before{
-    content:'';
-    width:20px;
-    height:2px;
-    background:linear-gradient(90deg,var(--violet),transparent);
+
+  .skill-category {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
   }
-  .skill-chips{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    list-style:none;
-    padding:0;
-    margin:0;
+
+  .skill-category h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
-  .skill-chips li{
-    font-size:14px;
-    color:var(--text-dim);
-    background:var(--surface-elev);
-    border:1px solid var(--line);
-    border-radius:var(--radius-md);
-    padding:8px 14px;
-    transition:all var(--transition-fast) var(--ease-out);
-    font-weight:400;
+
+  .skill-category h3::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background: linear-gradient(180deg, var(--accent-amber), var(--accent-teal));
+    border-radius: 2px;
   }
-  .skill-chips li:hover{
-    transform:translateY(-1px);
-    box-shadow:var(--shadow-sm);
+
+  .skill-list {
+    display: grid;
+    gap: 0.75rem;
   }
-  .skill-chips li:nth-child(3n+1){color:var(--amber);border-color:rgba(245,158,11,.25);background:rgba(245,166,35,.05)}
-  .skill-chips li:nth-child(3n+2){color:var(--teal);border-color:rgba(20,184,166,.25);background:rgba(20,184,166,.05)}
-  .skill-chips li:nth-child(3n+3){color:var(--violet);border-color:rgba(139,92,246,.25);background:rgba(139,92,246,.05)}
-  .skill-chips li:nth-child(3n+1):hover{background:rgba(245,166,35,.08)}
-  .skill-chips li:nth-child(3n+2):hover{background:rgba(20,184,166,.08)}
-  .skill-chips li:nth-child(3n+3):hover{background:rgba(139,92,246,.08)}
+
+  .skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--surface-variant);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+  }
+
+  .skill-item:hover {
+    background-color: var(--border-light);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .skill-name {
+    font-weight: 500;
+  }
+
+  .skill-level {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid currentColor;
+  }
+
+  .skill-level.beginner {
+    color: var(--accent-amber);
+  }
+
+  .skill-level.intermediate {
+    color: var(--accent-teal);
+  }
+
+  .skill-level.advanced {
+    color: var(--accent-violet);
+  }
+
+  /* ===== Contact Section ===== */
+  .contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    padding: 1rem;
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+  }
+
+  .contact-item:hover {
+    background-color: var(--border-light);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  .contact-item svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .contact-item.github { border-color: var(--accent-amber); }
+  .contact-item.linkedin { border-color: var(--accent-teal); }
+  .contact-item.email { border-color: var(--accent-coral); }
 
   /* ===== Footer ===== */
-  footer{
-    padding:48px 0 64px;
-  }
-  footer .row{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    flex-wrap:wrap;
-    gap:28px;
-  }
-  footer h2{
-    font-size:clamp(20px,4vw,24px);
-    margin-bottom:12px;
-    color:var(--text);
-  }
-  footer p{
-    color:var(--text-dim);
-    max-width:44ch;
-    font-size:15px;
-    line-height:1.7;
-  }
-  .contact-links{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    font-size:14px;
-  }
-  .contact-links a{
-    color:var(--text-dim);
-    padding:3px 0;
-    position:relative;
-    transition:color var(--transition-fast) var(--ease-out);
-  }
-  .contact-links a:hover{color:var(--amber)}
-  .contact-links a::after{
-    content:'';
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:0;
-    height:1px;
-    background:currentColor;
-    transition:width var(--transition-fast) var(--ease-out);
-  }
-  .contact-links a:hover::after{width:100%}
-  .foot-mark{
-    margin-top:40px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px;
-    color:var(--text-muted);
-    font-weight:400;
+  footer {
+    text-align: center;
+    padding: 3rem 0 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    border-top: 1px solid var(--border);
   }
 
-  /* ===== Responsive ===== */
-  @media (max-width:560px){
-    .wrap{padding:0 20px}
-    header.hero{padding:64px 0 48px}
-    .links{gap:20px}
-    .link-list{gap:20px}
-    section{padding:48px 0}
-    footer{padding:40px 0 56px}
-    footer .row{flex-direction:column;align-items:flex-start}
+  .footer-mark {
+    display: block;
+    margin-top: 1.5rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== Responsive Adjustments ===== */
+  @media (max-width: 768px) {
+    header {
+      padding: 4rem 0 2rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 8vw, 2.75rem);
+    }
+
+    .role {
+      font-size: 1rem;
+    }
+
+    .bio {
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 1rem;
+    }
+
+    header {
+      padding: 3rem 0 1.5rem;
+    }
+
+    .location {
+      font-size: 0.75rem;
+      padding: 0.375rem 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 10vw, 2.25rem);
+    }
+
+    .bio {
+      font-size: 0.9rem;
+    }
+
+    .links {
+      gap: 1rem;
+    }
+
+    .link-item {
+      font-size: 0.85rem;
+      padding: 0.375rem 0.75rem;
+    }
+  }
+
+  /* ===== Print Styles ===== */
+  @media print {
+    body {
+      background-color: white !important;
+      color: black !important;
+    }
+
+    .theme-toggle {
+      display: none;
+    }
+
+    a {
+      color: black !important;
+      text-decoration: underline;
+    }
+
+    header::before {
+      display: none;
+    }
+
+    h1 {
+      -webkit-text-fill-color: black;
+      -webkit-background-clip: initial;
+      background: none;
+      color: black;
+    }
   }
 </style>
 </head>
 <body>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </button>
 
-<div class="wrap">
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="kicker">Soroti, Uganda</div>
-      <h1>Samuel Ngabonziza</h1>
-      <p class="role">Undergraduate in Computer &amp; Electronics Engineering at Soroti University.</p>
-      <p class="bio">I build software and hardware that solve problems close to home — from attendance systems for institutions to IoT sensors that watch over a coffee dryer. Currently deep in AI, Python, and Android development.</p>
-      <div class="links">
-        <div class="link-list">
-          <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/ngabonziza-samuel-7755a937b" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:ngabonzizasamuelprosper@gmail.com">Email</a>
+  <div class="container">
+    <header>
+      <div class="hero-content">
+        <div class="location">Soroti, Uganda</div>
+        <h1>Samuel Ngabonziza</h1>
+        <p class="role">Undergraduate in Computer &amp; Electronics Engineering at Soroti University</p>
+        <p class="bio">I build practical software and hardware solutions that solve real-world problems — from attendance systems for educational institutions to IoT sensors that monitor agricultural processes. Currently focused on AI, Python development, and embedded systems engineering.</p>
+        <div class="links">
+          <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener" class="link-item github">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/ngabonziza-samuel-7755a937b" target="_blank" rel="noopener" class="link-item linkedin">
+            LinkedIn
+          </a>
+          <a href="mailto:ngabonzizasamuelprosper@gmail.com" class="link-item email">
+            Email
+          </a>
         </div>
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path class="sun" d="M12 3v1M12 20v1M4.22 4.22l.78.78M19 19l.78.78M3 12h1M20 12h1M4.22 19.78l.78-.78M19 5l.78-.78M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"></path>
-            <path class="moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <section id="projects">
-    <h2>Projects</h2>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-accent"></div>
+          <div class="project-content">
+            <h3>Super Attendance Maker <span class="project-tag">Android</span></h3>
+            <p class="project-description">
+              An attendance-tracking application designed for educational institutions and companies to replace manual sign-in sheets with a secure, digital solution that reduces fraud and saves administrative time.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-item">Android Studio</span>
+              <span class="tech-item">Kotlin</span>
+              <span class="tech-item">Java</span>
+            </div>
+            <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener" class="project-link">
+              View Source Code
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
 
-    <div class="project project-card">
-      <div class="accent-bar"></div>
-      <div class="content">
-        <h3>Super_Attendance_Maker <span class="tag">Android</span></h3>
-        <p>An attendance-tracking app built for companies and institutions to replace manual sign-in sheets with something faster and harder to falsify.</p>
-        <div class="stack"><span>Android</span><span>Kotlin/Java</span><span>In progress</span></div>
-        <a class="link" href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">
-          View on GitHub
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7l-1.5 1.5"></path></svg>
-        </a>
+        <div class="project-card">
+          <div class="project-accent"></div>
+          <div class="project-content">
+            <h3>IoT Coffee Dryer Monitor <span class="project-tag">IoT</span></h3>
+            <p class="project-description">
+              A sensor-based monitoring system for coffee drying operations that provides real-time data to smallholder processors, helping them optimize drying cycles and improve product quality.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-item">IoT</span>
+              <span class="tech-item">Sensors</span>
+              <span class="tech-item">Embedded</span>
+            </div>
+            <a href="https://github.com/SamuelNgabonziza/IoTCoffee_DryerMonitoniring_system" target="_blank" rel="noopener" class="project-link">
+              View Source Code
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="project secondary project-card">
-      <div class="accent-bar"></div>
-      <div class="content">
-        <h3>IoT Coffee Dryer Monitoring System <span class="tag">IoT</span></h3>
-        <p>A sensor-based monitoring system for coffee drying — built to give smallholder processors real-time visibility instead of guesswork.</p>
-        <div class="stack"><span>IoT</span><span>Sensors</span><span>Embedded</span></div>
-        <a class="link" href="https://github.com/SamuelNgabonziza/IoTCoffee_DryerMonitoniring_system" target="_blank" rel="noopener">
-          View on GitHub
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7l-1.5 1.5"></path></svg>
-        </a>
+      <p style="text-align: center; color: var(--text-muted); font-style: italic; margin-top: 2rem;">
+        More projects in development — check back for updates
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Programming &amp; Development</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">HTML/CSS</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Android Development</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Learning toward</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">Artificial Intelligence</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">IoT &amp; Embedded Systems</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Digital skills, broadly</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <p class="add-note">// more projects added as they ship</p>
-  </section>
+    <section id="contact">
+      <h2>Get In Touch</h2>
+      <div class="contact-content">
+        <p style="max-width: 500px; margin: 0 auto 2rem; color: var(--text-secondary);">
+          I'm open to internships, collaborations, and conversations about technology solutions that make a real difference in communities. Let's connect!
+        </p>
+        <div class="contact-info">
+          <a href="mailto:ngabonzizasamuelprosper@gmail.com" class="contact-item email">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            ngabonzizasamuelprosper@gmail.com
+          </a>
 
-  <section id="skills">
-    <h2>Focus areas</h2>
-    <div class="skills">
-      <div class="skill-group">
-        <h4>Building with</h4>
-        <ul class="skill-chips">
-          <li>Python</li>
-          <li>Android development</li>
-          <li>Web development</li>
-        </ul>
+          <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener" class="contact-item github">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5 7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1.72 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            github.com/SamuelNgabonziza
+          </a>
+
+          <a href="https://www.linkedin.com/in/ngabonziza-samuel-7755a937b" target="_blank" rel="noopener" class="contact-item linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            linkedin.com/in/ngabonziza-samuel-7755a937b
+          </a>
+        </div>
       </div>
-      <div class="skill-group">
-        <h4>Learning toward</h4>
-        <ul class="skill-chips">
-          <li>Artificial intelligence</li>
-          <li>IoT &amp; embedded systems</li>
-          <li>Digital skills, broadly</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <div class="row">
-      <div>
-        <h2>Get in touch</h2>
-        <p>Open to internships, collaboration, and conversations about anything I'm building.</p>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:ngabonzizasamuelprosper@gmail.com">ngabonzizasamuelprosper@gmail.com</a>
-        <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">github.com/SamuelNgabonziza</a>
-        <a href="https://www.linkedin.com/in/ngabonziza-samuel-7755a937b" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-    <div class="foot-mark">Soroti University — Computer &amp; Electronics Engineering</div>
-  </footer>
-</div>
+    <footer>
+      <p>© <span id="year"></span> Samuel Ngabonziza. All rights reserved.</p>
+      <span class="footer-mark">Soroti University — Computer &amp; Electronics Engineering</span>
+    </footer>
+  </div>
 
-<script>
-  // Theme toggle logic
-  const themeToggle = document.querySelector('.theme-toggle');
-  const html = document.documentElement;
-  const sunPaths = document.querySelectorAll('.theme-toggle .sun');
-  const moonPath = document.querySelector('.theme-toggle .moon');
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  function getSystemTheme() {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    const htmlElement = document.documentElement;
 
-  function setIcon(theme) {
-    if (theme === 'dark') {
-      sunPaths.forEach(s => s.style.display = 'none');
-      moonPath.style.display = 'block';
-    } else {
-      sunPaths.forEach(s => s.style.display = '');
-      moonPath.style.display = 'none';
-    }
-  }
+    // Check for saved user preference or use system preference
+    const getPreferredTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) return savedTheme;
 
-  function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    setIcon(theme);
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0F1420' : '#FFFFFF');
-  }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
 
-  // Initialize theme based on saved preference or system default
-  const savedTheme = localStorage.getItem('theme');
-  const initialTheme = savedTheme || getSystemTheme();
-  applyTheme(initialTheme);
+    // Set theme on the HTML element
+    const setTheme = (theme) => {
+      htmlElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    };
 
-  // Toggle handler
-  themeToggle.addEventListener('click', () => {
-    const current = html.getAttribute('data-theme');
-    const next = current === 'light' ? 'dark' : 'light';
-    localStorage.setItem('theme', next);
-    applyTheme(next);
-  });
+    // Initialize theme
+    const initialTheme = getPreferredTheme();
+    setTheme(initialTheme);
 
-  // Listen for system preference changes (when no explicit preference set)
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
-  });
-</script>
+    // Toggle theme when button is clicked
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      setTheme(newTheme);
+    });
+
+    // Respect system theme changes if no user preference set
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
 </body>
 </html>
