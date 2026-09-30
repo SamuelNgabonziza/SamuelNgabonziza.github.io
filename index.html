@@ -3,218 +3,499 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="description" content="Samuel Ngabonziza — Undergraduate in Computer & Electronics Engineering at Soroti University. Building software and hardware that solve problems close to home.">
 <title>Samuel Ngabonziza</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* ===== Theme Variables ===== */
   :root{
-    --bg:#0F1420;
-    --surface:#171F16;
-    --line:#2A3447;
-    --text:#ECEAE1;
-    --text-dim:#9BA7C4;
-    --amber:#F5A623;
-    --teal:#3ECFB0;
-    --coral:#FF6F61;
-    --violet:#9D7BFF;
+    /* Light theme (default) */
+    --bg:#FFFFFF;
+    --surface:#FFFFFF;
+    --surface-elev:#F8FAFC;
+    --line:#E2E8F0;
+    --line-thin:#F1F5F9;
+    --text:#0F172A;
+    --text-dim:#64748B;
+    --text-muted:#94A3B8;
+    --amber:#F59E0B;
+    --teal:#14B8A6;
+    --coral:#F43F5E;
+    --violet:#8B5CF6;
+    /* Shadows */
+    --shadow-xs:0 1px 2px 0 rgb(15 23 42 / 0.04);
+    --shadow-sm:0 1px 3px 0 rgb(15 23 42 / 0.1), 0 1px 2px -1px rgb(15 23 42 / 0.1);
+    --shadow-md:0 4px 6px -1px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.08);
+    --shadow-lg:0 10px 15px -3px rgb(15 23 42 / 0.08), 0 4px 6px -4px rgb(15 23 42 / 0.08);
+    --shadow-xl:0 20px 25px -5px rgb(15 23 42 / 0.08), 0 8px 10px -6px rgb(15 23 42 / 0.08);
+    --shadow-inner:inset 0 2px 4px 0 rgb(15 23 42 / 0.04);
+    /* Radius */
+    --radius-sm:6px;
+    --radius-md:10px;
+    --radius-lg:16px;
+    --radius-xl:24px;
+    /* Motion */
+    --ease-out:cubic-bezier(0.25,0.1,0.25,1);
+    --ease-in:cubic-bezier(0.42,0,1,1);
+    --transition-fast:150ms;
+    --transition-normal:250ms;
+    --transition-slow:400ms;
     box-sizing:border-box;
     padding-top:env(safe-area-inset-top,0px);
     padding-bottom:env(safe-area-inset-bottom,0px);
   }
-  *{box-sizing:inherit;margin:0;padding:0}
-  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth}
-  html,body{background:var(--bg)}
+  /* Dark theme (system preference) */
+  @media (prefers-color-scheme: dark) {
+    :root{
+      --bg:#0F1420;
+      --surface:#111826;
+      --surface-elev:#171F26;
+      --line:#2A3447;
+      --line-thin:rgba(42,52,71,0.5);
+      --text:#ECEAE1;
+      --text-dim:#9BA7C4;
+      --text-muted:#7A879B;
+      --amber:#F5A623;
+      --teal:#3ECFB0;
+      --coral:#FF6F61;
+      --violet:#9D7BFF;
+      --shadow-xs:0 1px 2px 0 rgb(0 0 0 / 0.2);
+      --shadow-sm:0 1px 3px 0 rgb(0 0 0 / 0.25), 0 1px 2px -1px rgb(0 0 0 / 0.25);
+      --shadow-md:0 4px 6px -1px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.25);
+      --shadow-lg:0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.25);
+      --shadow-xl:0 20px 25px -5px rgb(0 0 0 / 0.25), 0 8px 10px -6px rgb(0 0 0 / 0.25);
+      --shadow-inner:inset 0 2px 4px 0 rgb(0 0 0 / 0.2);
+    }
+  }
+  /* Manual override (if user sets a preference) */
+  html[data-theme="light"]{
+    --bg:#FFFFFF;
+    --surface:#FFFFFF;
+    --surface-elev:#F8FAFC;
+    --line:#E2E8F0;
+    --line-thin:#F1F5F9;
+    --text:#0F172A;
+    --text-dim:#64748B;
+    --text-muted:#94A3B8;
+    --amber:#F59E0B;
+    --teal:#14B8A6;
+    --coral:#F43F5E;
+    --violet:#8B5CF6;
+  }
+  html[data-theme="dark"]{
+    --bg:#0F1420;
+    --surface:#111826;
+    --surface-elev:#171F26;
+    --line:#2A3447;
+    --line-thin:rgba(42,52,71,0.5);
+    --text:#ECEAE1;
+    --text-dim:#9BA7C4;
+    --text-muted:#7A879B;
+    --amber:#F5A623;
+    --teal:#3ECFB0;
+    --coral:#FF6F61;
+    --violet:#9D7BFF;
+  }
+  /* ===== Reset & Base ===== */
+  :root{box-sizing:border-box}
+  *, *::before, *::after{box-sizing:inherit;margin:0;padding:0}
+  html{
+    scroll-padding-top:env(safe-area-inset-top,0px);
+    scroll-behavior:smooth;
+    font-size:clamp(15px,1vw + 0.5rem,17px);
+  }
+  html,body{background:var(--bg);transition:background-color var(--transition-normal) var(--ease-out),color var(--transition-normal) var(--ease-out)}
   body{
     color:var(--text);
     font-family:'IBM Plex Sans',sans-serif;
-    font-size:16px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    font-weight:400;
   }
-  a{color:inherit}
-  .wrap{max-width:760px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
 
+  /* ===== Layout: Grid & Spacing ===== */
+  section{padding:56px 0;border-bottom:1px solid var(--line);transition:border-color var(--transition-normal) var(--ease-out)}
+  section:last-of-type{border-bottom:none}
+  section + section{margin-top:8px}
+
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.01em}
+  h1{font-size:clamp(36px,8vw,64px);line-height:1.05}
+  h2{font-size:clamp(22px,4vw,26px);margin-bottom:32px}
+  h3{font-size:clamp(17px,2.5vw,19px);font-weight:600;margin-bottom:8px}
+  h4{font-size:13px;font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:.04em}
+  p{line-height:1.65}
+
+  /* ===== Hero Section ===== */
   header.hero{
-    padding:96px 0 72px;
+    padding:80px 0 64px;
+    position:relative;
+    overflow:hidden;
     border-bottom:1px solid var(--line);
-    background:
-      radial-gradient(circle at 12% 0%, rgba(245,166,35,.16), transparent 45%),
-      radial-gradient(circle at 88% 30%, rgba(62,207,176,.14), transparent 50%),
-      radial-gradient(circle at 60% 90%, rgba(157,123,255,.10), transparent 55%);
   }
+  header.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 12% 0%,rgba(245,166,35,.08),transparent 35%),
+      radial-gradient(circle at 88% 30%,rgba(62,207,176,.08),transparent 40%),
+      radial-gradient(circle at 60% 90%,rgba(157,123,255,.06),transparent 45%);
+    opacity:0.8;
+  }
+  .hero-inner{position:relative;z-index:1}
+
   .kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
     font-family:'IBM Plex Mono',monospace;
     font-size:13px;
     color:var(--teal);
-    letter-spacing:.02em;
-    margin-bottom:22px;
+    letter-spacing:.04em;
+    margin-bottom:28px;
+    font-weight:500;
+    padding:5px 12px;
+    background:rgba(20,184,166,0.08);
+    border-radius:var(--radius-sm);
   }
+  .kicker::before{
+    content:'\2022';
+    font-size:14px;
+    opacity:0.8;
+  }
+
   h1{
     font-family:'Fraunces',serif;
     font-weight:500;
-    font-size:clamp(40px,7vw,64px);
     line-height:1.05;
-    letter-spacing:-.01em;
-    background:linear-gradient(100deg, var(--text) 40%, var(--amber) 75%, var(--coral) 100%);
+    letter-spacing:-.015em;
+    background:linear-gradient(100deg,var(--amber) 0%,var(--coral) 50%,var(--violet) 100%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
+    background-size:200% auto;
+    animation:gradient-shift 6s ease-in-out infinite;
   }
+  @keyframes gradient-shift{
+    0%,100%{background-position:0%}
+    50%{background-position:100%}
+  }
+
   .role{
-    font-size:18px;
+    font-size:17px;
     color:var(--text-dim);
-    margin-top:18px;
-    max-width:46ch;
+    margin-top:20px;
+    font-weight:400;
+    line-height:1.5;
   }
   .bio{
-    margin-top:22px;
+    margin-top:20px;
     font-size:16px;
     color:var(--text);
-    max-width:56ch;
+    max-width:58ch;
+    line-height:1.7;
   }
+
   .links{
-    margin-top:34px;
+    margin-top:36px;
     display:flex;
-    gap:22px;
+    gap:28px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .link-list{
+    display:flex;
+    gap:28px;
     flex-wrap:wrap;
   }
-  .links a{
-    font-size:15px;
-    text-decoration:none;
-    border-bottom:1px solid var(--line);
-    padding-bottom:3px;
-    transition:border-color .15s ease, color .15s ease;
-  }
-  .links a:hover{border-color:var(--amber); color:var(--amber)}
-  .links a:nth-child(2):hover{border-color:var(--teal); color:var(--teal)}
-  .links a:nth-child(3):hover{border-color:var(--coral); color:var(--coral)}
-
-  section{padding:64px 0; border-bottom:1px solid var(--line)}
-  section:last-of-type{border-bottom:none}
-  h2{
-    font-family:'Fraunces',serif;
+  .link-list a{
+    font-size:14px;
     font-weight:500;
-    font-size:26px;
-    margin-bottom:36px;
+    color:var(--text-dim);
+    padding:3px 0;
+    position:relative;
+    transition:color var(--transition-fast) var(--ease-out);
   }
+  .link-list a:hover{
+    color:var(--amber);
+    border-color:var(--amber);
+  }
+  .link-list a:nth-child(1):hover{color:var(--amber)}
+  .link-list a:nth-child(2):hover{color:var(--teal)}
+  .link-list a:nth-child(3):hover{color:var(--coral)}
+  .link-list a::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:1px;
+    background:currentColor;
+    transition:width var(--transition-fast) var(--ease-out);
+  }
+  .link-list a:hover::after{width:100%}
 
-  .project{
-    display:flex;
-    gap:24px;
-    padding:26px 0;
-    border-top:1px solid var(--line);
+  /* Theme toggle button */
+  .theme-toggle{
+    --size:36px;
+    width:var(--size);
+    height:var(--size);
+    border-radius:var(--radius-md);
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--text-dim);
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    transition:all var(--transition-normal) var(--ease-out);
+    box-shadow:var(--shadow-sm);
+    flex-shrink:0;
   }
-  .project:first-of-type{border-top:none}
-  .project .bar{
-    flex:0 0 3px;
+  .theme-toggle:hover{
+    border-color:var(--amber);
+    color:var(--amber);
+    transform:scale(1.05);
+    box-shadow:var(--shadow-md);
+  }
+  .theme-toggle:focus{outline:2px solid var(--amber);outline-offset:2px}
+  .theme-toggle svg{width:16px;height:16px}
+  .theme-toggle .moon{display:none}
+
+  /* ===== Projects Section ===== */
+  .project-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:28px;
+    box-shadow:var(--shadow-xs);
+    transition:box-shadow var(--transition-normal) var(--ease-out),transform var(--transition-normal) var(--ease-out),border-color var(--transition-normal) var(--ease-out);
+    position:relative;
+    overflow:hidden;
+  }
+  .project-card:hover{
+    box-shadow:var(--shadow-lg);
+    transform:translateY(-2px);
+  }
+  .project-card:hover .accent-bar{opacity:0.8}
+  .accent-bar{
+    position:absolute;
+    top:0;
+    left:0;
+    width:3px;
+    height:100%;
+    border-radius:0 4px 4px 0;
     background:var(--amber);
-    border-radius:2px;
+    opacity:0.6;
+    transition:opacity var(--transition-fast) var(--ease-out);
   }
-  .project.secondary .bar{background:var(--teal)}
-  .project .content{flex:1; min-width:0}
+  .project.secondary .accent-bar{
+    background:var(--teal);
+  }
+  .project .content{margin-left:12px}
   .project h3{
-    font-size:19px;
+    font-size:clamp(17px,2.2vw,19px);
     font-weight:600;
     margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
   }
-  .project h3 .tag{
+  .tag{
     font-family:'IBM Plex Mono',monospace;
     font-size:11px;
+    font-weight:500;
     color:var(--amber);
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:2px 7px;
-    margin-left:10px;
-    vertical-align:middle;
+    background:rgba(245,158,11,.12);
+    border:1px solid rgba(245,158,11,.25);
+    border-radius:var(--radius-sm);
+    padding:3px 10px;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    white-space:nowrap;
   }
-  .project.secondary h3 .tag{color:var(--teal); border-color:rgba(62,207,176,.35)}
-  .project h3 .tag{border-color:rgba(245,166,35,.35)}
-  .project p{color:var(--text-dim); font-size:15px; max-width:56ch}
+  .project.secondary .tag{
+    color:var(--teal);
+    background:rgba(20,184,166,.12);
+    border-color:rgba(20,184,166,.25);
+  }
+  .project p{
+    color:var(--text-dim);
+    font-size:15px;
+    max-width:56ch;
+    margin-bottom:16px;
+  }
   .stack{
     margin-top:14px;
     display:flex;
-    gap:10px;
+    gap:8px;
     flex-wrap:wrap;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px;
-    color:var(--text-dim);
   }
   .stack span{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    font-weight:500;
+    color:var(--text-dim);
+    background:var(--surface-elev);
     border:1px solid var(--line);
-    border-radius:4px;
-    padding:3px 8px;
+    border-radius:var(--radius-sm);
+    padding:4px 10px;
+    transition:all var(--transition-fast) var(--ease-out);
   }
-  .stack span:nth-child(3n+1){color:var(--amber); border-color:rgba(245,166,35,.3)}
-  .stack span:nth-child(3n+2){color:var(--teal); border-color:rgba(62,207,176,.3)}
-  .stack span:nth-child(3n+3){color:var(--violet); border-color:rgba(157,123,255,.3)}
+  .stack span:nth-child(3n+1){color:var(--amber);border-color:rgba(245,158,11,.2);background:rgba(245,158,11,.03)}
+  .stack span:nth-child(3n+2){color:var(--teal);border-color:rgba(20,184,166,.2);background:rgba(20,184,166,.03)}
+  .stack span:nth-child(3n+3){color:var(--violet);border-color:rgba(139,92,246,.2);background:rgba(139,92,246,.03)}
+  .stack span:hover{
+    transform:translateY(-1px);
+    box-shadow:var(--shadow-xs);
+  }
+
   .project .link{
-    display:inline-block;
-    margin-top:16px;
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    margin-top:18px;
     font-size:14px;
-    text-decoration:none;
+    font-weight:500;
     color:var(--amber);
-    border-bottom:1px solid transparent;
+    transition:color var(--transition-fast) var(--ease-out);
   }
+  .project .link:hover{color:var(--amber)}
   .project.secondary .link{color:var(--teal)}
-  .project .link:hover{border-color:currentColor}
+  .project.secondary .link:hover{color:var(--teal)}
+  .project .link svg{width:14px;height:14px}
 
   .add-note{
-    margin-top:30px;
+    margin-top:28px;
     font-size:13px;
     color:var(--text-dim);
     font-family:'IBM Plex Mono',monospace;
   }
 
+  /* ===== Skills Section ===== */
   .skills{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:32px 40px;
   }
-  @media (max-width:520px){ .skills{grid-template-columns:1fr} }
+  @media (max-width:560px){ .skills{grid-template-columns:1fr} }
   .skill-group h4{
     font-size:13px;
     font-family:'IBM Plex Mono',monospace;
     color:var(--violet);
-    font-weight:400;
-    margin-bottom:10px;
+    font-weight:500;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
   }
-  .skill-group ul{list-style:none}
-  .skill-group li{
-    font-size:15px;
-    padding:6px 0 6px 16px;
-    border-top:1px solid var(--line);
-    position:relative;
-  }
-  .skill-group li:first-child{border-top:none}
-  .skill-group li::before{
+  .skill-group h4::before{
     content:'';
-    position:absolute; left:0; top:16px;
-    width:6px; height:6px; border-radius:50%;
-    background:var(--coral);
+    width:20px;
+    height:2px;
+    background:linear-gradient(90deg,var(--violet),transparent);
   }
-  .skill-group:last-child li::before{background:var(--teal)}
+  .skill-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  .skill-chips li{
+    font-size:14px;
+    color:var(--text-dim);
+    background:var(--surface-elev);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:8px 14px;
+    transition:all var(--transition-fast) var(--ease-out);
+    font-weight:400;
+  }
+  .skill-chips li:hover{
+    transform:translateY(-1px);
+    box-shadow:var(--shadow-sm);
+  }
+  .skill-chips li:nth-child(3n+1){color:var(--amber);border-color:rgba(245,158,11,.25);background:rgba(245,166,35,.05)}
+  .skill-chips li:nth-child(3n+2){color:var(--teal);border-color:rgba(20,184,166,.25);background:rgba(20,184,166,.05)}
+  .skill-chips li:nth-child(3n+3){color:var(--violet);border-color:rgba(139,92,246,.25);background:rgba(139,92,246,.05)}
+  .skill-chips li:nth-child(3n+1):hover{background:rgba(245,166,35,.08)}
+  .skill-chips li:nth-child(3n+2):hover{background:rgba(20,184,166,.08)}
+  .skill-chips li:nth-child(3n+3):hover{background:rgba(139,92,246,.08)}
 
+  /* ===== Footer ===== */
   footer{
-    padding:56px 0 80px;
+    padding:48px 0 64px;
   }
   footer .row{
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
     flex-wrap:wrap;
-    gap:20px;
+    gap:28px;
   }
-  footer h2{margin-bottom:14px}
-  footer p{color:var(--text-dim); max-width:44ch; font-size:15px}
-  .contact-links{display:flex; flex-direction:column; gap:10px; font-size:15px}
-  .contact-links a{text-decoration:none; border-bottom:1px solid var(--line)}
-  .contact-links a:hover{color:var(--amber); border-color:var(--amber)}
+  footer h2{
+    font-size:clamp(20px,4vw,24px);
+    margin-bottom:12px;
+    color:var(--text);
+  }
+  footer p{
+    color:var(--text-dim);
+    max-width:44ch;
+    font-size:15px;
+    line-height:1.7;
+  }
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    font-size:14px;
+  }
+  .contact-links a{
+    color:var(--text-dim);
+    padding:3px 0;
+    position:relative;
+    transition:color var(--transition-fast) var(--ease-out);
+  }
+  .contact-links a:hover{color:var(--amber)}
+  .contact-links a::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:1px;
+    background:currentColor;
+    transition:width var(--transition-fast) var(--ease-out);
+  }
+  .contact-links a:hover::after{width:100%}
   .foot-mark{
-    margin-top:48px;
+    margin-top:40px;
     font-family:'IBM Plex Mono',monospace;
     font-size:12px;
-    color:var(--text-dim);
+    color:var(--text-muted);
+    font-weight:400;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width:560px){
+    .wrap{padding:0 20px}
+    header.hero{padding:64px 0 48px}
+    .links{gap:20px}
+    .link-list{gap:20px}
+    section{padding:48px 0}
+    footer{padding:40px 0 56px}
+    footer .row{flex-direction:column;align-items:flex-start}
   }
 </style>
 </head>
@@ -222,37 +503,53 @@
 
 <div class="wrap">
   <header class="hero">
-    <div class="kicker">Soroti, Uganda</div>
-    <h1>Samuel Ngabonziza</h1>
-    <p class="role">Undergraduate in Computer &amp; Electronics Engineering at Soroti University.</p>
-    <p class="bio">I build software and hardware that solve problems close to home — from attendance systems for institutions to IoT sensors that watch over a coffee dryer. Currently deep in AI, Python, and Android development.</p>
-    <div class="links">
-      <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/ngabonziza-samuel-7755a937b" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:ngabonzizasamuelprosper@gmail.com">Email</a>
+    <div class="hero-inner">
+      <div class="kicker">Soroti, Uganda</div>
+      <h1>Samuel Ngabonziza</h1>
+      <p class="role">Undergraduate in Computer &amp; Electronics Engineering at Soroti University.</p>
+      <p class="bio">I build software and hardware that solve problems close to home — from attendance systems for institutions to IoT sensors that watch over a coffee dryer. Currently deep in AI, Python, and Android development.</p>
+      <div class="links">
+        <div class="link-list">
+          <a href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/ngabonziza-samuel-7755a937b" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:ngabonzizasamuelprosper@gmail.com">Email</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path class="sun" d="M12 3v1M12 20v1M4.22 4.22l.78.78M19 19l.78.78M3 12h1M20 12h1M4.22 19.78l.78-.78M19 5l.78-.78M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"></path>
+            <path class="moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
   <section id="projects">
     <h2>Projects</h2>
 
-    <div class="project">
-      <div class="bar"></div>
+    <div class="project project-card">
+      <div class="accent-bar"></div>
       <div class="content">
         <h3>Super_Attendance_Maker <span class="tag">Android</span></h3>
         <p>An attendance-tracking app built for companies and institutions to replace manual sign-in sheets with something faster and harder to falsify.</p>
         <div class="stack"><span>Android</span><span>Kotlin/Java</span><span>In progress</span></div>
-        <a class="link" href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">View on GitHub →</a>
+        <a class="link" href="https://github.com/SamuelNgabonziza" target="_blank" rel="noopener">
+          View on GitHub
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7l-1.5 1.5"></path></svg>
+        </a>
       </div>
     </div>
 
-    <div class="project secondary">
-      <div class="bar"></div>
+    <div class="project secondary project-card">
+      <div class="accent-bar"></div>
       <div class="content">
         <h3>IoT Coffee Dryer Monitoring System <span class="tag">IoT</span></h3>
         <p>A sensor-based monitoring system for coffee drying — built to give smallholder processors real-time visibility instead of guesswork.</p>
         <div class="stack"><span>IoT</span><span>Sensors</span><span>Embedded</span></div>
-        <a class="link" href="https://github.com/SamuelNgabonziza/IoTCoffee_DryerMonitoniring_system" target="_blank" rel="noopener">View on GitHub →</a>
+        <a class="link" href="https://github.com/SamuelNgabonziza/IoTCoffee_DryerMonitoniring_system" target="_blank" rel="noopener">
+          View on GitHub
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7l-1.5 1.5"></path></svg>
+        </a>
       </div>
     </div>
 
@@ -264,7 +561,7 @@
     <div class="skills">
       <div class="skill-group">
         <h4>Building with</h4>
-        <ul>
+        <ul class="skill-chips">
           <li>Python</li>
           <li>Android development</li>
           <li>Web development</li>
@@ -272,7 +569,7 @@
       </div>
       <div class="skill-group">
         <h4>Learning toward</h4>
-        <ul>
+        <ul class="skill-chips">
           <li>Artificial intelligence</li>
           <li>IoT &amp; embedded systems</li>
           <li>Digital skills, broadly</li>
@@ -297,5 +594,53 @@
   </footer>
 </div>
 
+<script>
+  // Theme toggle logic
+  const themeToggle = document.querySelector('.theme-toggle');
+  const html = document.documentElement;
+  const sunPaths = document.querySelectorAll('.theme-toggle .sun');
+  const moonPath = document.querySelector('.theme-toggle .moon');
+
+  function getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setIcon(theme) {
+    if (theme === 'dark') {
+      sunPaths.forEach(s => s.style.display = 'none');
+      moonPath.style.display = 'block';
+    } else {
+      sunPaths.forEach(s => s.style.display = '');
+      moonPath.style.display = 'none';
+    }
+  }
+
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    setIcon(theme);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0F1420' : '#FFFFFF');
+  }
+
+  // Initialize theme based on saved preference or system default
+  const savedTheme = localStorage.getItem('theme');
+  const initialTheme = savedTheme || getSystemTheme();
+  applyTheme(initialTheme);
+
+  // Toggle handler
+  themeToggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', next);
+    applyTheme(next);
+  });
+
+  // Listen for system preference changes (when no explicit preference set)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+</script>
 </body>
 </html>
